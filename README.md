@@ -27,7 +27,8 @@ ctest --test-dir build -L task --output-on-failure    # wszystkie zadania
 
 Windows (Visual Studio): `cmake --build build --config Release`, pliki są w `build\Release\`, testy: `ctest --test-dir build -C Release -L task`.
 
-> [!WARNING] Najpierw `cmake --build`, potem `ctest`
+> [!WARNING]
+> Najpierw `cmake --build`, potem `ctest`. 
 > `ctest` nie kompiluje testów. Po zmianie w `zadanieN.hpp` zawsze uruchom `cmake --build build`. Wyjątek: testy "ma się nie kompilować" kompiluje sam `ctest`.
 
 ## Jak czytać wynik
@@ -56,7 +57,8 @@ task5.MustNotCompile.swap_values ...***Failed
     the code compiled, but it must fail with the error: "swap_values: type must be copyable"
 ```
 
-> [!TIP] Plik testów się nie kompiluje?
+> [!TIP]
+> Plik testów się nie kompiluje? 
 > `cmake --build build` pokaże błąd kompilatora. Zwykle to błąd w Twoim `zadanieN.hpp`. Zbuduj tylko jedno zadanie, aby inne nie zasłaniały błędu: `cmake --build build --target task3`.
 
 ## Zadania
@@ -115,7 +117,8 @@ Plik: `zadania/zadanie5.hpp`. Materiały: sekcja 4.1 i 4.4.
 
 Testy sprawdzają też, że dla złych typów wywołanie **się nie kompiluje**. Do tego służy detekcja przez `std::void_t` na początku `testy/test_zadanie5.cpp`. Przeczytaj ją: to ta sama technika SFINAE, której używasz w zadaniu.
 
-> [!WARNING] `bool` jest typem całkowitym
+> [!WARNING]
+> `bool` jest typem całkowitym. 
 > Jeśli nie wykluczysz go z przeciążenia "inne całkowite", wywołanie `to_text(true)` pasuje do dwóch przeciążeń. Test pokaże wtedy: `to_text(bool) does not exist or is ambiguous`.
 
 ## Wymagania
